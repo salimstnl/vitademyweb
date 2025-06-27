@@ -1,9 +1,9 @@
 "use client";
 import { useSelectedLayoutSegment } from "next/navigation";
 
-async function getModule(slug) {
-  const res = 
-}
+// async function getModule(slug) {
+//   const res =
+// }
 
 export default function ModulesDetail({ slug }: { slug: string }) {
   const segment = useSelectedLayoutSegment();
