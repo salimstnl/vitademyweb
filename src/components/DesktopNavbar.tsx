@@ -10,14 +10,14 @@ import {
 } from "./ui/NavigationMenu";
 import Link from "next/link";
 import ModeToggle from "./ModeToggle";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
+// import {
+//   SignedIn,
+//   SignedOut,
+//   SignInButton,
+//   SignUpButton,
+//   UserButton,
+//   useUser,
+// } from "@clerk/nextjs";
 import { Button } from "./ui/Button";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -142,8 +142,8 @@ const vitaminRedirects: { title: string; href: string; description: string }[] =
   ];
 
 function DesktopNavbar() {
-  const { user } = useUser();
-  const isAdmin = (user?.publicMetadata as { isAdmin?: boolean })?.isAdmin;
+  // const { user } = useUser();
+  // const isAdmin = (user?.publicMetadata as { isAdmin?: boolean })?.isAdmin;
   const [isContactOpen, setContactOpen] = useState(false);
 
   const [isSending, setIsSending] = useState(false);
@@ -357,7 +357,7 @@ function DesktopNavbar() {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-            {isAdmin && (
+            {/* {isAdmin && (
               <NavigationMenuItem>
                 <NavigationMenuLink
                   asChild
@@ -366,13 +366,13 @@ function DesktopNavbar() {
                   <Link href="/admin/dashboard">Vitamin</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-            )}
+            )} */}
           </NavigationMenuList>
         </NavigationMenu>
       </div>
       <div className="flex gap-5 items-center">
         <ModeToggle></ModeToggle>
-        <SignedOut>
+        {/* <SignedOut>
           <SignInButton mode="modal">
             <Button className="w-30">Sign In</Button>
           </SignInButton>
@@ -382,7 +382,7 @@ function DesktopNavbar() {
         </SignedOut>
         <SignedIn>
           <UserButton />
-        </SignedIn>
+        </SignedIn> */}
       </div>
     </div>
   );

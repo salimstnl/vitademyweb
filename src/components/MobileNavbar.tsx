@@ -11,7 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/Accordion";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/Drawer";
-import { useUser } from "@clerk/nextjs";
+// import { useUser } from "@clerk/nextjs";
 import {
   Dialog,
   DialogClose,
@@ -134,8 +134,8 @@ const vitaminRedirects: { title: string; href: string; description: string }[] =
   ];
 
 function MobileNavbar() {
-  const { user } = useUser();
-  const isAdmin = (user?.publicMetadata as { isAdmin?: boolean })?.isAdmin;
+  // const { user } = useUser();
+  // const isAdmin = (user?.publicMetadata as { isAdmin?: boolean })?.isAdmin;
   const [isContactOpen, setContactOpen] = useState(false);
 
   return (
@@ -274,7 +274,7 @@ function MobileNavbar() {
                   ))}
                 </AccordionContent>
               </AccordionItem>
-              {isAdmin && (
+              {/* {isAdmin && (
                 <AccordionItem value="item-5" className="py-2 px-10">
                   <AccordionTrigger className="text-md">
                     VitaMin
@@ -289,7 +289,7 @@ function MobileNavbar() {
                     ))}
                   </AccordionContent>
                 </AccordionItem>
-              )}
+              )} */}
             </Accordion>
           </DrawerContent>
         </Drawer>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+// import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -28,15 +28,15 @@ export default function UserLayout({
       enableSystem
       disableTransitionOnChange
     >
-      <ClerkProvider>
-        <html lang="en" className={inter.className}>
-          <body>
-            <Navbar />
-            {children}
-            <Footer />
-          </body>
-        </html>
-      </ClerkProvider>
+      {/* <ClerkProvider> */}
+      <html lang="en" className={inter.className}>
+        <body>
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+      {/* </ClerkProvider> */}
     </ThemeProvider>
   );
 }
