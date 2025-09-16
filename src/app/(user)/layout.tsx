@@ -13,7 +13,19 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Vitademy",
-  description: "A great space to ask.",
+  description: "The greatest space to ask.",
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/public/logo-small.png", // Path to your light mode icon
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/public/logo-small.png", // Path to your dark mode icon
+      },
+    ],
+  },
 };
 
 export default function UserLayout({

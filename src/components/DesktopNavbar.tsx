@@ -29,30 +29,23 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 
-const learnings: { title: string; href: string; description: string }[] = [
+const vitaClasses: { title: string; href: string; description: string }[] = [
   {
-    title: "Modules",
+    title: "Learning Modules",
     href: "/learn/modules",
     description:
       "Interactive lessons that simplify math, science, and more with engaging activities.",
   },
   {
-    title: "Articles",
-    href: "/learn/articles",
-    description:
-      "Explore thought-provoking insights, educational content, and inspiring stories.",
-  },
-  {
-    title: "Math Challenges",
+    title: "Daily Quests",
     href: "/learn/challenges",
     description:
-      "Sharpen your mind with fun math problems, brain teasers, and logic puzzles.",
+      "Sharpen your mind with fun quests, brain teasers, and logic puzzles.",
   },
   {
     title: "Curiosity Corner",
@@ -62,40 +55,46 @@ const learnings: { title: string; href: string; description: string }[] = [
   },
 ];
 
-const events: { title: string; href: string; description: string }[] = [
+const vitaVoices: { title: string; href: string; description: string }[] = [
   {
-    title: "Workshops",
-    href: "/event/workshops",
+    title: "Articles",
+    href: "/learn/articles",
+    description:
+      "Explore thought-provoking insights, educational content, and inspiring stories.",
+  },
+  {
+    title: "Events",
+    href: "/event",
     description:
       "Hands-on sessions where you can experiment, build, and learn through exciting activities.",
   },
-  {
-    title: "Seminars",
-    href: "/event/seminars",
-    description:
-      "Engaging talks and discussions led by experts to expand your knowledge and insights.",
-  },
 ];
 
-const shops: { title: string; href: string; description: string }[] = [
+const vitaConnects: { title: string; href: string; description: string }[] = [
   {
-    title: "Products & Services",
-    href: "/shop/products-and-services",
+    title: "Our Products",
+    href: "/connect/our-products",
     description:
       "Everything we offer — from brain-boosting content to cool community perks.",
   },
   {
-    title: "Merch",
-    href: "/shop/merch",
+    title: "Become a Member",
+    href: "/connect/become-a-member",
+    description:
+      "We have merch! 🎉 Wear your love for learning loud and proud!",
+  },
+  {
+    title: "Career",
+    href: "/connect/career",
     description:
       "We have merch! 🎉 Wear your love for learning loud and proud!",
   },
 ];
 
-const stories: { title: string; href: string; description: string }[] = [
+const vitaStories: { title: string; href: string; description: string }[] = [
   {
-    title: "About Vitademy",
-    href: "/story/about-vitademy",
+    title: "About Us",
+    href: "/story/about-us",
     description:
       "Get to know the people, passion, and purpose behind Vitademy.",
   },
@@ -246,7 +245,7 @@ function DesktopNavbar() {
                   Got anything you want to say to us? Give us a shout!
                 </DialogDescription>
               </DialogHeader>
-              <div className="grid gap-4">
+              <div className="grid gap-4 py-5">
                 <div className="grid gap-3">
                   <Label htmlFor="name">Name</Label>
                   <Input id="name" name="name" />
@@ -282,16 +281,32 @@ function DesktopNavbar() {
         <NavigationMenu className="text-2xl">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>VitaLearn</NavigationMenuTrigger>
+              <NavigationMenuTrigger>VitaClass</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {learnings.map((learning) => (
+                  {vitaClasses.map((vitaClass) => (
                     <ListItem
-                      key={learning.title}
-                      title={learning.title}
-                      href={learning.href}
+                      key={vitaClass.title}
+                      title={vitaClass.title}
+                      href={vitaClass.href}
                     >
-                      {learning.description}
+                      {vitaClass.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>VitaVoice</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {vitaVoices.map((vitaVoice) => (
+                    <ListItem
+                      key={vitaVoice.title}
+                      title={vitaVoice.title}
+                      href={vitaVoice.href}
+                    >
+                      {vitaVoice.description}
                     </ListItem>
                   ))}
                 </ul>
@@ -301,29 +316,13 @@ function DesktopNavbar() {
               <NavigationMenuTrigger>VitaConnect</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {events.map((event) => (
+                  {vitaConnects.map((vitaConnect) => (
                     <ListItem
-                      key={event.title}
-                      title={event.title}
-                      href={event.href}
+                      key={vitaConnect.title}
+                      title={vitaConnect.title}
+                      href={vitaConnect.href}
                     >
-                      {event.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>VitaShop</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                  {shops.map((shop) => (
-                    <ListItem
-                      key={shop.title}
-                      title={shop.title}
-                      href={shop.href}
-                    >
-                      {shop.description}
+                      {vitaConnect.description}
                     </ListItem>
                   ))}
                 </ul>
@@ -333,22 +332,25 @@ function DesktopNavbar() {
               <NavigationMenuTrigger>VitaStory</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  {stories.map((story) => {
-                    const isContact = story.title === "Contact";
+                  {vitaStories.map((vitaStory) => {
+                    const isContact = vitaStory.title === "Contact";
                     return (
-                      <div key={story.title}>
+                      <div key={vitaStory.title}>
                         {isContact ? (
                           <button
                             onClick={() => setContactOpen(true)}
                             className="text-left w-full"
                           >
-                            <ListItem title={story.title}>
-                              {story.description}
+                            <ListItem title={vitaStory.title}>
+                              {vitaStory.description}
                             </ListItem>
                           </button>
                         ) : (
-                          <ListItem title={story.title} href={story.href}>
-                            {story.description}
+                          <ListItem
+                            title={vitaStory.title}
+                            href={vitaStory.href}
+                          >
+                            {vitaStory.description}
                           </ListItem>
                         )}
                       </div>

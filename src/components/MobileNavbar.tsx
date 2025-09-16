@@ -27,24 +27,18 @@ import { Textarea } from "./ui/textarea";
 import { Input } from "./ui/input";
 import { Button } from "./ui/Button";
 
-const learnings: { title: string; href: string; description: string }[] = [
+const vitaClasses: { title: string; href: string; description: string }[] = [
   {
-    title: "Modules",
+    title: "Learning Modules",
     href: "/learn/modules",
     description:
       "Interactive lessons that simplify math, science, and more with engaging activities.",
   },
   {
-    title: "Articles",
-    href: "/learn/articles",
-    description:
-      "Explore thought-provoking insights, educational content, and inspiring stories.",
-  },
-  {
-    title: "Math Challenges",
+    title: "Daily Quests",
     href: "/learn/challenges",
     description:
-      "Sharpen your mind with fun math problems, brain teasers, and logic puzzles.",
+      "Sharpen your mind with fun quests, brain teasers, and logic puzzles.",
   },
   {
     title: "Curiosity Corner",
@@ -54,40 +48,46 @@ const learnings: { title: string; href: string; description: string }[] = [
   },
 ];
 
-const events: { title: string; href: string; description: string }[] = [
+const vitaVoices: { title: string; href: string; description: string }[] = [
   {
-    title: "Workshops",
-    href: "/event/workshops",
+    title: "Articles",
+    href: "/learn/articles",
+    description:
+      "Explore thought-provoking insights, educational content, and inspiring stories.",
+  },
+  {
+    title: "Events",
+    href: "/event",
     description:
       "Hands-on sessions where you can experiment, build, and learn through exciting activities.",
   },
-  {
-    title: "Seminars",
-    href: "/event/seminars",
-    description:
-      "Engaging talks and discussions led by experts to expand your knowledge and insights.",
-  },
 ];
 
-const shops: { title: string; href: string; description: string }[] = [
+const vitaConnects: { title: string; href: string; description: string }[] = [
   {
-    title: "Products & Services",
-    href: "/shop/products-and-services",
+    title: "Our Products",
+    href: "/connect/our-products",
     description:
       "Everything we offer — from brain-boosting content to cool community perks.",
   },
   {
-    title: "Merch",
-    href: "/shop/merch",
+    title: "Become a Member",
+    href: "/connect/become-a-member",
+    description:
+      "We have merch! 🎉 Wear your love for learning loud and proud!",
+  },
+  {
+    title: "Career",
+    href: "/connect/career",
     description:
       "We have merch! 🎉 Wear your love for learning loud and proud!",
   },
 ];
 
-const stories: { title: string; href: string; description: string }[] = [
+const vitaStories: { title: string; href: string; description: string }[] = [
   {
-    title: "About Vitademy",
-    href: "/story/about-vitademy",
+    title: "About Us",
+    href: "/story/about-us",
     description:
       "Get to know the people, passion, and purpose behind Vitademy.",
   },
@@ -210,36 +210,36 @@ function MobileNavbar() {
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1" className="py-2 px-10">
                 <AccordionTrigger className="text-md">
-                  VitaLearn
+                  VitaClass
                 </AccordionTrigger>
                 <AccordionContent className="AccordionContent">
-                  {learnings.map((learning) => (
+                  {vitaClasses.map((vitaClass) => (
                     <div className="px-10 py-5">
-                      <a href={learning.href}>{learning.title}</a>
+                      <a href={vitaClass.href}>{vitaClass.title}</a>
                     </div>
                   ))}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2" className="py-2 px-10">
                 <AccordionTrigger className="text-md">
-                  VitaConnect
+                  VitaVoice
                 </AccordionTrigger>
                 <AccordionContent className="AccordionContent">
-                  {events.map((event) => (
+                  {vitaVoices.map((vitaVoice) => (
                     <div className="px-10 py-5">
-                      <a href={event.href}>{event.title}</a>
+                      <a href={vitaVoice.href}>{vitaVoice.title}</a>
                     </div>
                   ))}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3" className="py-2 px-10">
                 <AccordionTrigger className="text-md">
-                  VitaShop
+                  VitaConnect
                 </AccordionTrigger>
                 <AccordionContent className="AccordionContent">
-                  {shops.map((shop) => (
+                  {vitaConnects.map((vitaConnect) => (
                     <div className="px-10 py-5">
-                      <a href={shop.href}>{shop.title}</a>
+                      <a href={vitaConnect.href}>{vitaConnect.title}</a>
                     </div>
                   ))}
                 </AccordionContent>
@@ -249,27 +249,27 @@ function MobileNavbar() {
                   VitaStory
                 </AccordionTrigger>
                 <AccordionContent className="AccordionContent">
-                  {stories.map((story) => {
-                    const isContact = story.title === "Contact";
+                  {vitaStories.map((vitaStory) => {
+                    const isContact = vitaStory.title === "Contact";
                     return (
-                      <div key={story.title}>
+                      <div key={vitaStory.title}>
                         {isContact ? (
                           <div className="px-10 py-5">
                             <a onClick={() => setContactOpen(true)}>
-                              {story.title}
+                              {vitaStory.title}
                             </a>
                           </div>
                         ) : (
                           <div className="px-10 py-5">
-                            <a href={story.href}>{story.title}</a>
+                            <a href={vitaStory.href}>{vitaStory.title}</a>
                           </div>
                         )}
                       </div>
                     );
                   })}
-                  {stories.map((story) => (
+                  {vitaStories.map((vitaStory) => (
                     <div className="px-10 py-5">
-                      <a href={story.href}>{story.title}</a>
+                      <a href={vitaStory.href}>{vitaStory.title}</a>
                     </div>
                   ))}
                 </AccordionContent>

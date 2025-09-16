@@ -7,51 +7,67 @@ import Image from "next/image";
 import { FaDiscord, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { SiX } from "react-icons/si";
 
-const learnings: { title: string; href: string }[] = [
+const vitaClasses: { title: string; href: string; description: string }[] = [
   {
-    title: "Modules",
+    title: "Learning Modules",
     href: "/learn/modules",
+    description:
+      "Interactive lessons that simplify math, science, and more with engaging activities.",
   },
   {
-    title: "Articles",
-    href: "/learn/articles",
-  },
-  {
-    title: "Math Challenges",
+    title: "Daily Quests",
     href: "/learn/challenges",
+    description:
+      "Sharpen your mind with fun quests, brain teasers, and logic puzzles.",
   },
   {
     title: "Curiosity Corner",
     href: "/learn/curiosity",
+    description:
+      "Uncover mind-blowing facts, intriguing questions, and fascinating discoveries.",
   },
 ];
 
-const events: { title: string; href: string }[] = [
+const vitaVoices: { title: string; href: string; description: string }[] = [
   {
-    title: "Workshops",
-    href: "/event/workshops",
+    title: "Articles",
+    href: "/learn/articles",
+    description:
+      "Explore thought-provoking insights, educational content, and inspiring stories.",
   },
   {
-    title: "Seminars",
-    href: "/event/seminars",
-  },
-];
-
-const productTypes: { title: string; href: string }[] = [
-  {
-    title: "Product & Services",
-    href: "/shop/product-and-services",
-  },
-  {
-    title: "Merch",
-    href: "/shop/merch",
+    title: "Events",
+    href: "/event",
+    description:
+      "Hands-on sessions where you can experiment, build, and learn through exciting activities.",
   },
 ];
 
-const stories: { title: string; href: string; description: string }[] = [
+const vitaConnects: { title: string; href: string; description: string }[] = [
   {
-    title: "About Vitademy",
-    href: "/story/about-vitademy",
+    title: "Our Products",
+    href: "/connect/our-products",
+    description:
+      "Everything we offer — from brain-boosting content to cool community perks.",
+  },
+  {
+    title: "Become a Member",
+    href: "/connect/become-a-member",
+    description:
+      "We have merch! 🎉 Wear your love for learning loud and proud!",
+  },
+  {
+    title: "Career",
+    href: "/connect/career",
+    description:
+      "We have merch! 🎉 Wear your love for learning loud and proud!",
+  },
+];
+
+const vitaStories: { title: string; href: string; description: string }[] = [
+  {
+    title: "About Us",
+    href: "/story/about-us",
     description:
       "Get to know the people, passion, and purpose behind Vitademy.",
   },
@@ -73,7 +89,7 @@ const socialLinks = [
   { icon: <FaWhatsapp />, url: "https://wa.me", color: "#25D366" },
   {
     icon: <FaInstagram />,
-    url: "https://www.instagram.com/vitademy.official",
+    url: "https://www.instagram.com/vitademyspace/",
     color: "#E4405F",
   },
   { icon: <SiX />, url: "https://x.com", color: "#000000" },
@@ -116,34 +132,34 @@ export default function Footer() {
         </div>
         <div className="md:grid md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-4 md:gap-6">
-            <h1 className="font-bold">VitaLearn</h1>
-            {learnings.map((learning) => (
-              <Link className="hover:underline" href={learning.href}>
-                {learning.title}
+            <h1 className="font-bold">VitaClass</h1>
+            {vitaClasses.map((vitaClass) => (
+              <Link className="hover:underline" href={vitaClass.href}>
+                {vitaClass.title}
               </Link>
             ))}
           </div>
           <div className="mt-12 md:mt-0 flex flex-col gap-4 md:gap-6">
-            <h1 className="font-bold">VitaEvent</h1>
-            {events.map((event) => (
-              <Link className="hover:underline" href={event.href}>
-                {event.title}
+            <h1 className="font-bold">VitaVoice</h1>
+            {vitaVoices.map((vitaVoice) => (
+              <Link className="hover:underline" href={vitaVoice.href}>
+                {vitaVoice.title}
               </Link>
             ))}
           </div>
           <div className="mt-12 md:mt-0 flex flex-col gap-4 md:gap-6">
-            <h1 className="font-bold">VitaShop</h1>
-            {productTypes.map((productType) => (
-              <Link className="hover:underline" href={productType.href}>
-                {productType.title}
+            <h1 className="font-bold">VitaConnect</h1>
+            {vitaConnects.map((vitaConnect) => (
+              <Link className="hover:underline" href={vitaConnect.href}>
+                {vitaConnect.title}
               </Link>
             ))}
           </div>
           <div className="mt-12 md:mt-0 flex flex-col gap-4 md:gap-6">
             <h1 className="font-bold">VitaStory</h1>
-            {stories.map((story) => (
-              <Link className="hover:underline" href={story.href}>
-                {story.title}
+            {vitaStories.map((vitaStory) => (
+              <Link className="hover:underline" href={vitaStory.href}>
+                {vitaStory.title}
               </Link>
             ))}
           </div>

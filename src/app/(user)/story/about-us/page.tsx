@@ -17,12 +17,13 @@ export default function About() {
           <h4 className="text-md font-light text-gray-500 dark:text-gray-300">
             OUR STORY
           </h4>
-          <h1 className="text-5xl font-black">Lesson One: Who We Are</h1>
+          <h1 className="text-5xl font-black overflow-hidden">
+            Lesson One: Who We Are
+          </h1>
           <p>
-            Dive into the world of knowledge with Vitademy. From math to
-            science, our expert-designed modules help you master new skills,
-            expand your understanding, and unlock your potential. Start your
-            learning adventure today!
+            Vitademy aims to revolutionize education through decentralization
+            and adaptability, making mathematics and related subjects more
+            engaging and practical for learners worldwide.
           </p>
           <Button>Get Started</Button>
         </div>
