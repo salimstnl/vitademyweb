@@ -370,7 +370,7 @@ export default function Home() {
                   <div>
                     <Image
                       src="/events/foundation-of-learning.png"
-                      alt="Free Modules"
+                      alt="Foundation of Learning"
                       width={400}
                       height={400}
                       className="rounded-2xl"
@@ -448,21 +448,25 @@ export default function Home() {
                   <div className="h-[900px] rounded-2xl border-2 p-10">
                     <div className="flex flex-col gap-10 h-full">
                       <Image
-                        src="/free_modules.jpg"
-                        alt="Free Modules"
+                        src="/events/from-theory-to-reality.png"
+                        alt="From Theory To Reality"
                         width={400}
                         height={400}
                         className="rounded-2xl"
                       />
                       <h2 className="text-3xl font-black">
-                        🌍 Decentralised Forum. Knowledge Without Borders.
+                        From Theory to Reality: Skill yang Gak Akan Tergantikan
                       </h2>
                       <p>
-                        Vitademy’s open forum lets anyone share, ask, and learn
-                        — no gatekeeping, just real, community-driven education.
+                        Dalam dunia yang serba cepat dan terus berubah, ada
+                        skill yang nilainya gak akan pernah hilang. Di
+                        masterclass ini, kamu akan belajar bagaimana mengubah
+                        teori menjadi keterampilan nyata yang bisa langsung
+                        diterapkan, memberi kamu keunggulan di tengah
+                        persaingan.
                       </p>
                       <Link href="/learn/modules">
-                        <Button>Start Asking</Button>
+                        <Button>Sign Me Up</Button>
                       </Link>
                     </div>
                   </div>
@@ -471,23 +475,24 @@ export default function Home() {
                   <div className="h-[900px] rounded-2xl border-2 p-10">
                     <div className="flex flex-col gap-10 h-full">
                       <Image
-                        src="/education_event.jpg"
-                        alt="Education Event"
+                        src="/events/foundation-of-learning.png"
+                        alt="Foundation of Learning"
                         width={400}
                         height={400}
                         className="rounded-2xl"
                       />
                       <h2 className="text-3xl font-black">
-                        📅 Join Events. Stay Connected.
+                        Foundation of Learning.
                       </h2>
                       <p>
-                        Learn beyond the platform. Join our workshops, seminars,
-                        and networking events to connect with passionate
-                        learners worldwide — grow your knowledge and your
-                        network.
+                        Inilah titik awal bagi siapa pun yang ingin berkembang,
+                        beradaptasi, dan terus tumbuh di tengah perubahan zaman.
+                        Dengan fondasi yang tepat, setiap langkah berikutnya
+                        akan terasa lebih mudah, lebih bermakna, dan lebih
+                        berdampak.
                       </p>
                       <Link href="/event/workshops">
-                        <Button>I'm Interested</Button>
+                        <Button>Start Learning</Button>
                       </Link>
                     </div>
                   </div>
@@ -496,22 +501,48 @@ export default function Home() {
                   <div className="h-[900px] rounded-2xl border-2 p-10">
                     <div className="flex flex-col gap-10 h-full">
                       <Image
-                        src="/one_on_one.jpg"
-                        alt="One on One Consultation"
+                        src="/events/one-on-one.png"
+                        alt="One on One Consulting"
                         width={400}
                         height={400}
                         className="rounded-2xl"
                       />
                       <h2 className="text-3xl font-black">
-                        🎯 One-on-One Consultations. Personalised Just For You.
+                        One-on-One Consultations. Personalised Just For You.
                       </h2>
                       <p className="text-justify">
-                        Get personalised guidance to overcome challenges, set
-                        clear goals, and stay on track — tailored to your
-                        learning journey.
+                        Bicara atau diskusi empat mata dengan kita ya. Ngomongin
+                        apa aja dari pilihan kuliah, jenjang karir dan apapun
+                        yang ada di pikiran Anda. Kami sedia mendengarkan
+                        kalian.
                       </p>
                       <Link href="">
                         <Button>Meet Our Consultors</Button>
+                      </Link>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="h-[900px] rounded-2xl border-2 p-10">
+                    <div className="flex flex-col gap-10 h-full">
+                      <Image
+                        src="/events/one-to-many.png"
+                        alt=" One-to-Many Group Consultations"
+                        width={400}
+                        height={400}
+                        className="rounded-2xl"
+                      />
+                      <h2 className="text-3xl font-black">
+                        One-to-Many Group Consultations.
+                      </h2>
+                      <p className="text-justify">
+                        Ingin networking atau sekedar membuat teman? Kami
+                        membuka konsultasi / diskusi grup ya. Lebih dari dua
+                        otak digabungkan menjadi satu untuk membicarakan
+                        berbagai macam topik.
+                      </p>
+                      <Link href="">
+                        <Button>I'm Interested</Button>
                       </Link>
                     </div>
                   </div>
