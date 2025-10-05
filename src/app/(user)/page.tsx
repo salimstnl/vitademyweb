@@ -4,8 +4,6 @@ import { Button } from "@/components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactTyped } from "react-typed";
-import { FaDiscord, FaWhatsapp, FaInstagram } from "react-icons/fa";
-import { SiX } from "react-icons/si";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css";
@@ -20,96 +18,10 @@ import {
 import SectionHeader from "@/components/ui/SectionHeader";
 import { useState } from "react";
 import ContactDialog from "@/components/ContactDialog";
-
-const learningModules = [
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 1",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 2",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 3",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 4",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 5",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 6",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 7",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 8",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-  {
-    imageURL: "/free_modules.jpg",
-    title: "Coming Soon 9",
-    createdDate: "March 26, 2025",
-    creatorName: "Vitademy",
-  },
-];
-
-const faqs = [
-  {
-    id: "1",
-    question: "What is Vitademy and how does it work?",
-    answer:
-      "Vitademy is a decentralised learning platform offering an extensive range of interactive resources, and community-driven discussions — all designed for you to learn at your own pace.",
-  },
-  {
-    id: "2",
-    question: "Is Vitademy free to use?",
-    answer:
-      "We offer open access to many resources, forums, and events. Some premium features or personalised consultations may require payment.",
-  },
-  {
-    id: "3",
-    question: "How is Vitademy different from other online learning platforms?",
-    answer:
-      "Vitademy is decentralised — meaning no central authority dictates your pace or access. You control your learning, contribute to discussions, and engage with a global community without limits.",
-  },
-  {
-    id: "4",
-    question: "Can anyone contribute to Vitademy?",
-    answer:
-      "Yes! Our open forum allows anyone to share ideas, ask questions, or help others — creating a collaborative, community-powered learning space.",
-  },
-  {
-    id: "5",
-    question: "Do I need to follow a strict schedule?",
-    answer:
-      "Not at all. Vitademy is built for flexibility. Learn when, where, and how you want — with resources designed to fit your rhythm.",
-  },
-];
+import { learningModules } from "@/data/modules";
+import { faqs } from "@/data/faqs";
+import { masterclasses } from "@/data/masterclasses";
+import MasterclassCard from "@/components/MasterclassCard";
 
 export default function Home() {
   const [isContactOpen, setContactOpen] = useState(false);
@@ -315,6 +227,7 @@ export default function Home() {
               </div>
             </Link>
           </section>
+          {/* Masterclass Desktop */}
           <section>
             <div className="flex flex-col gap-10">
               <div className="hidden md:grid md:grid-cols-3 md:gap-10">
@@ -324,110 +237,10 @@ export default function Home() {
                     Learn from the Best. Become the Best.
                   </h1>
                 </div>
-                <div className="col-span-2 from-20% to-60%  bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
-                  <div>
-                    <Image
-                      src="/events/from-theory-to-reality.png"
-                      alt="From Theory To Reality"
-                      width={400}
-                      height={400}
-                      className="rounded-2xl"
-                    ></Image>
-                  </div>
-                  <div className="flex flex-col gap-10">
-                    <h2 className="text-3xl font-black">
-                      From Theory to Reality: Skill yang Gak Akan Tergantikan
-                    </h2>
-                    <p className="text-justify">
-                      Dalam dunia yang serba cepat dan terus berubah, ada skill
-                      yang nilainya gak akan pernah hilang. Di masterclass ini,
-                      kamu akan belajar bagaimana mengubah teori menjadi
-                      keterampilan nyata yang bisa langsung diterapkan, memberi
-                      kamu keunggulan di tengah persaingan.
-                    </p>
-                    <Link href="https://lynk.id/vitademy/o4kxoq5qd3ol">
-                      <Button>Sign Me Up</Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="hidden md:grid md:grid-cols-3 md:gap-10">
-                <div className="col-span-2 from-20% to-60%  bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
-                  <div className="flex flex-col gap-10">
-                    <h2 className="text-3xl font-black">
-                      Foundation of Learning.
-                    </h2>
-                    <p className="text-justify">
-                      Inilah titik awal bagi siapa pun yang ingin berkembang,
-                      beradaptasi, dan terus tumbuh di tengah perubahan zaman.
-                      Dengan fondasi yang tepat, setiap langkah berikutnya akan
-                      terasa lebih mudah, lebih bermakna, dan lebih berdampak.
-                    </p>
-                    <Link href="https://lynk.id/vitademy/875or18x34lo">
-                      <Button>Start Learning</Button>
-                    </Link>
-                  </div>
-                  <div>
-                    <Image
-                      src="/events/foundation-of-learning.png"
-                      alt="Foundation of Learning"
-                      width={400}
-                      height={400}
-                      className="rounded-2xl"
-                    ></Image>
-                  </div>
-                </div>
-                <div className="row-span-2 from-20% to-60%  bg-gradient-to-b rounded-2xl border-2 p-10">
-                  <div className="flex flex-col gap-20">
-                    <div className="flex flex-col gap-5">
-                      <h2 className="text-3xl font-black">
-                        One-to-Many Group Consultations.
-                      </h2>
-                      <p className="text-justify">
-                        Ingin networking atau sekedar membuat teman? Kami
-                        membuka konsultasi / diskusi grup ya. Lebih dari dua
-                        otak digabungkan menjadi satu untuk membicarakan
-                        berbagai macam topik.
-                      </p>
-                      <Link href="https://lynk.id/vitademy/g7ple4kjegzq">
-                        <Button>I'm Interested</Button>
-                      </Link>
-                    </div>
-                    <div>
-                      <Image
-                        src="/events/one-to-many.png"
-                        alt=" One-to-Many Group Consultations"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      ></Image>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-span-2 from-20% to-60%  bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
-                  <div>
-                    <Image
-                      src="/events/one-on-one.png"
-                      alt="One on One Consulting"
-                      width={400}
-                      height={400}
-                      className="rounded-2xl"
-                    ></Image>
-                  </div>
-                  <div className="flex flex-col gap-10">
-                    <h2 className="text-3xl font-black">
-                      One-on-One Consultations. Personalised Just For You.
-                    </h2>
-                    <p className="text-justify">
-                      Bicara atau diskusi empat mata dengan kita ya. Ngomongin
-                      apa aja dari pilihan kuliah, jenjang karir dan apapun yang
-                      ada di pikiran Anda. Kami sedia mendengarkan kalian.
-                    </p>
-                    <Link href="https://lynk.id/vitademy/z8zkmyvjvkqe">
-                      <Button>Meet Our Consultors</Button>
-                    </Link>
-                  </div>
-                </div>
+
+                {masterclasses.map((item, i) => (
+                  <MasterclassCard key={i} {...item} />
+                ))}
               </div>
             </div>
           </section>
@@ -444,109 +257,11 @@ export default function Home() {
                 slidesPerView={1}
                 className="rounded-2xl"
               >
-                <SwiperSlide>
-                  <div className="h-[900px] rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/events/from-theory-to-reality.png"
-                        alt="From Theory To Reality"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">
-                        From Theory to Reality: Skill yang Gak Akan Tergantikan
-                      </h2>
-                      <p>
-                        Dalam dunia yang serba cepat dan terus berubah, ada
-                        skill yang nilainya gak akan pernah hilang. Di
-                        masterclass ini, kamu akan belajar bagaimana mengubah
-                        teori menjadi keterampilan nyata yang bisa langsung
-                        diterapkan, memberi kamu keunggulan di tengah
-                        persaingan.
-                      </p>
-                      <Link href="https://lynk.id/vitademy/o4kxoq5qd3ol">
-                        <Button>Sign Me Up</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="h-[900px] rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/events/foundation-of-learning.png"
-                        alt="Foundation of Learning"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">
-                        Foundation of Learning.
-                      </h2>
-                      <p>
-                        Inilah titik awal bagi siapa pun yang ingin berkembang,
-                        beradaptasi, dan terus tumbuh di tengah perubahan zaman.
-                        Dengan fondasi yang tepat, setiap langkah berikutnya
-                        akan terasa lebih mudah, lebih bermakna, dan lebih
-                        berdampak.
-                      </p>
-                      <Link href="https://lynk.id/vitademy/875or18x34lo">
-                        <Button>Start Learning</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="h-[900px] rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/events/one-on-one.png"
-                        alt="One on One Consulting"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">
-                        One-on-One Consultations. Personalised Just For You.
-                      </h2>
-                      <p className="text-justify">
-                        Bicara atau diskusi empat mata dengan kita ya. Ngomongin
-                        apa aja dari pilihan kuliah, jenjang karir dan apapun
-                        yang ada di pikiran Anda. Kami sedia mendengarkan
-                        kalian.
-                      </p>
-                      <Link href="https://lynk.id/vitademy/z8zkmyvjvkqe">
-                        <Button>Meet Our Consultors</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="h-[900px] rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/events/one-to-many.png"
-                        alt=" One-to-Many Group Consultations"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">
-                        One-to-Many Group Consultations.
-                      </h2>
-                      <p className="text-justify">
-                        Ingin networking atau sekedar membuat teman? Kami
-                        membuka konsultasi / diskusi grup ya. Lebih dari dua
-                        otak digabungkan menjadi satu untuk membicarakan
-                        berbagai macam topik.
-                      </p>
-                      <Link href="https://lynk.id/vitademy/g7ple4kjegzq">
-                        <Button>I'm Interested</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
+                {masterclasses.map((item, i) => (
+                  <SwiperSlide key={i}>
+                    <MasterclassCard {...item} isMobile />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </section>
