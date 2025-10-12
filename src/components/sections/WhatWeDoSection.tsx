@@ -41,7 +41,7 @@ export default function WhatWeDoSection() {
           <div className="grid md:grid-cols-2">
             <div className="hidden md:flex items-center">
               <Image
-                src="/what-we-give/connect.jpg"
+                src="/what-we-do/connect.jpg"
                 alt="Learning Module Thumbnail"
                 width={600}
                 height={600}
@@ -54,7 +54,7 @@ export default function WhatWeDoSection() {
               </h1>
               <div className="md:hidden flex items-center">
                 <Image
-                  src="/what-we-give/connect.jpg"
+                  src="/what-we-do/connect.jpg"
                   alt="Learning Module Thumbnail"
                   width={600}
                   height={600}
@@ -73,7 +73,7 @@ export default function WhatWeDoSection() {
               </h1>
               <div className="md:hidden flex justify-center">
                 <Image
-                  src="/what-we-give/find-your-style.jpg"
+                  src="/what-we-do/find-your-style.jpg"
                   alt="Learning Module Thumbnail"
                   width={600}
                   height={200}
@@ -94,7 +94,7 @@ export default function WhatWeDoSection() {
             </div>
             <div className="hidden md:flex justify-center">
               <Image
-                src="/what-we-give/find-your-style.jpg"
+                src="/what-we-do/find-your-style.jpg"
                 alt="Learning Module Thumbnail"
                 width={600}
                 height={200}

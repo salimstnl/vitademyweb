@@ -18,14 +18,14 @@ export default function WhatWeGiveSection() {
             <div className="flex flex-col gap-10">
               <h2 className="text-3xl font-black">{t("detail-1")}</h2>
               <p className="text-justify">{t("detailDescription-1")}</p>
-              <Link href="/learn/modules">
+              <Link href="/learn/forum">
                 <Button>{t("detailBtnText-1")}</Button>
               </Link>
             </div>
             <div>
               <Image
-                src="/free_modules.jpg"
-                alt="Free Modules"
+                src="/what-we-give/decentralized-forum.jpg"
+                alt="Decentralized Forum"
                 width={400}
                 height={400}
                 className="rounded-2xl"
@@ -43,8 +43,8 @@ export default function WhatWeGiveSection() {
               </div>
               <div>
                 <Image
-                  src="/education_event.jpg"
-                  alt="Education Event"
+                  src="/what-we-give/learning-module.jpg"
+                  alt="Learning Module"
                   width={400}
                   height={400}
                   className="rounded-2xl"
@@ -55,8 +55,8 @@ export default function WhatWeGiveSection() {
           <div className="col-span-2 from-20% to-60% from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
             <div>
               <Image
-                src="/one_on_one.jpg"
-                alt="One on One Consulting"
+                src="/what-we-give/vita-shop.jpg"
+                alt="Vita Shop"
                 width={400}
                 height={400}
                 className="rounded-2xl"
@@ -65,7 +65,7 @@ export default function WhatWeGiveSection() {
             <div className="flex flex-col gap-10">
               <h2 className="text-3xl font-black">{t("detail-3")}</h2>
               <p className="text-justify">{t("detailDescription-3")}</p>
-              <Link href="">
+              <Link href="/connect/our-products">
                 <Button>{t("detailBtnText-3")}</Button>
               </Link>
             </div>
