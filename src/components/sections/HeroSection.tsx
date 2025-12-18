@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ReactTyped } from "react-typed";
 import { Button } from "../ui/Button";
-import ContactDialog from "../ContactDialog";
+import ContactDialog from "../contact-dialog";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 

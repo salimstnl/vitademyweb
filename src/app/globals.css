@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "uploadthing/tw/v4";
+@source "../../node_modules/@uploadthing/react/dist";
+
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
@@ -122,6 +125,35 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1 {
+    @apply text-2xl font-bold;
+  }
+  h2 {
+    @apply text-xl font-bold;
+  }
+  h3 {
+    @apply text-lg font-bold;
+  }
+
+  .editor {
+    @apply flex min-h-[300px] border border-black rounded overflow-auto;
+  }
+
+  .editor > div {
+    @apply p-2.5 flex-grow; /* 10px = 2.5 * 4px */
+  }
+
+  .editor > div:focus-within {
+    @apply outline-none;
+  }
+
+  .editor p {
+    @apply break-words;
+  }
+
+  .editor .moveable-control-box {
+    @apply z-[9];
   }
 }
 

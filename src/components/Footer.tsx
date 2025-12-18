@@ -3,105 +3,46 @@
 import React from "react";
 import { Button } from "./ui/Button";
 import Link from "next/link";
-import Image from "next/image";
 import { FaDiscord, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { SiX } from "react-icons/si";
+import { useTranslations } from "next-intl";
+import LogoOnlyImage from "./logo-only-image";
 
-const vitaClasses: { title: string; href: string; description: string }[] = [
-  {
-    title: "Learning Modules",
-    href: "/learn/modules",
-    description:
-      "Interactive lessons that simplify math, science, and more with engaging activities.",
-  },
-  {
-    title: "Daily Quests",
-    href: "/learn/challenges",
-    description:
-      "Sharpen your mind with fun quests, brain teasers, and logic puzzles.",
-  },
-  {
-    title: "Curiosity Corner",
-    href: "/learn/curiosity",
-    description:
-      "Uncover mind-blowing facts, intriguing questions, and fascinating discoveries.",
-  },
-];
+type FooterProps = {
+  user?: {
+    name?: string | null;
+    email?: string | null;
+    role?: string | null;
+    username?: string | null;
+    id?: string | null;
+  } | null;
+};
 
-const vitaVoices: { title: string; href: string; description: string }[] = [
-  {
-    title: "Articles",
-    href: "/learn/articles",
-    description:
-      "Explore thought-provoking insights, educational content, and inspiring stories.",
-  },
-  {
-    title: "Events",
-    href: "/event",
-    description:
-      "Hands-on sessions where you can experiment, build, and learn through exciting activities.",
-  },
-];
+export default function Footer({ user }: FooterProps) {
+  const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
+  function scrollToTop() {
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
-const vitaConnects: { title: string; href: string; description: string }[] = [
-  {
-    title: "Our Products",
-    href: "/connect/our-products",
-    description:
-      "Everything we offer — from brain-boosting content to cool community perks.",
-  },
-  {
-    title: "Become a Member",
-    href: "/connect/become-a-member",
-    description:
-      "We have merch! 🎉 Wear your love for learning loud and proud!",
-  },
-  {
-    title: "Career",
-    href: "/connect/career",
-    description:
-      "We have merch! 🎉 Wear your love for learning loud and proud!",
-  },
-];
+  const t = useTranslations("Navbar");
+  const vitaMin = t.raw("vitaMin");
+  const vitaClasses = t.raw("vitaClasses");
+  const vitaVoices = t.raw("vitaVoices");
+  const vitaConnects = t.raw("vitaConnects");
+  const vitaStories = t.raw("vitaStories");
 
-const vitaStories: { title: string; href: string; description: string }[] = [
-  {
-    title: "About Us",
-    href: "/story/about-us",
-    description:
-      "Get to know the people, passion, and purpose behind Vitademy.",
-  },
-  {
-    title: "Contact",
-    href: "/story/contact",
-    description: "Questions, feedback, or just want to say hi? We’re all ears.",
-  },
-  {
-    title: "FAQ",
-    href: "/story/faq",
-    description:
-      "Got questions? We’ve got answers — quick, clear, and helpful.",
-  },
-];
+  const socialLinks = [
+    { icon: <FaDiscord />, url: "https://dsc.gg/vitademy", color: "#5865F2" },
+    { icon: <FaWhatsapp />, url: "https://wa.me", color: "#25D366" },
+    {
+      icon: <FaInstagram />,
+      url: "https://www.instagram.com/vitademyspace/",
+      color: "#E4405F",
+    },
+    { icon: <SiX />, url: "https://x.com", color: "#000000" },
+  ];
 
-const socialLinks = [
-  { icon: <FaDiscord />, url: "https://dsc.gg/vitademy", color: "#5865F2" },
-  { icon: <FaWhatsapp />, url: "https://wa.me", color: "#25D366" },
-  {
-    icon: <FaInstagram />,
-    url: "https://www.instagram.com/vitademyspace/",
-    color: "#E4405F",
-  },
-  { icon: <SiX />, url: "https://x.com", color: "#000000" },
-];
-
-const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
-function scrollToTop() {
-  if (!isBrowser()) return;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-export default function Footer() {
   return (
     <div>
       <div className="border-t dark:border-t-white px-5 md:px-20 py-10">
@@ -131,38 +72,29 @@ export default function Footer() {
           </Button>
         </div>
         <div className="md:grid md:grid-cols-2 lg:grid-cols-4">
-          <div className="flex flex-col gap-4 md:gap-6">
-            <h1 className="font-bold">VitaClass</h1>
-            {vitaClasses.map((vitaClass) => (
-              <Link className="hover:underline" href={vitaClass.href}>
-                {vitaClass.title}
-              </Link>
+          {[
+            { label: "VitaMin", items: vitaMin, adminOnly: true },
+            { label: "VitaClass", items: vitaClasses },
+            { label: "VitaVoice", items: vitaVoices },
+            { label: "VitaConnect", items: vitaConnects },
+            { label: "VitaStory", items: vitaStories },
+          ]
+            // Only include VitaMin if user is admin
+            .filter((section) => !section.adminOnly || user?.role === "ADMIN")
+            .map(({ label, items }) => (
+              <div className="flex flex-col gap-4 md:gap-6 mb-20">
+                <h1 className="font-bold">{t(label)}</h1>
+                {items.map((item: any) => (
+                  <Link
+                    className="hover:underline"
+                    href={item.href}
+                    key={item.href}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
             ))}
-          </div>
-          <div className="mt-12 md:mt-0 flex flex-col gap-4 md:gap-6">
-            <h1 className="font-bold">VitaVoice</h1>
-            {vitaVoices.map((vitaVoice) => (
-              <Link className="hover:underline" href={vitaVoice.href}>
-                {vitaVoice.title}
-              </Link>
-            ))}
-          </div>
-          <div className="mt-12 md:mt-0 flex flex-col gap-4 md:gap-6">
-            <h1 className="font-bold">VitaConnect</h1>
-            {vitaConnects.map((vitaConnect) => (
-              <Link className="hover:underline" href={vitaConnect.href}>
-                {vitaConnect.title}
-              </Link>
-            ))}
-          </div>
-          <div className="mt-12 md:mt-0 flex flex-col gap-4 md:gap-6">
-            <h1 className="font-bold">VitaStory</h1>
-            {vitaStories.map((vitaStory) => (
-              <Link className="hover:underline" href={vitaStory.href}>
-                {vitaStory.title}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
       <div className="border-t dark:border-t-white px-5 md:px-20 py-10">
@@ -170,12 +102,7 @@ export default function Footer() {
           <div className="md:flex gap-10 items-center">
             <div className="flex gap-5 items-center">
               <Link href="/">
-                <Image
-                  src="/logo-small.png"
-                  width={30}
-                  height={20}
-                  alt="Vitademy Logo"
-                ></Image>
+                <LogoOnlyImage width={30} height={20}></LogoOnlyImage>
               </Link>
               <h1 className="dark:text-gray-400 text-gray-500">
                 © 2025 Vitademy. All rights reserved.

@@ -1,4 +1,4 @@
-import MaintenancePage from "@/components/MaintenancePage";
+import MaintenancePage from "@/components/maintenance-page";
 import React from "react";
 
 export default function page() {

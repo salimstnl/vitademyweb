@@ -1,5 +1,11 @@
 {
   "Navbar": {
+    "welcomeMessage": "Welcome, ",
+    "notLoggedInWelcomeMessageMobile": "Nice to meet you",
+    "loggedInWelcomeMessageMobile": "Welcome back",
+    "registerMessage": "Create account",
+    "loginMessage": "Login to your existing account",
+    "VitaMin": "VitaMin",
     "VitaClass": "VitaClass",
     "VitaVoice": "VitaVoice",
     "VitaConnect": "VitaConnect",
@@ -7,9 +13,27 @@
     "ContactDialog": {
       "title": "Contact Vita",
       "description": "Got anything you want to say to us? Give us a shout!",
+      "inquiryLabel": "Your message ...",
       "cancel": "Cancel",
       "send": "Send"
     },
+    "vitaMin": [
+      {
+        "title": "Manage Article",
+        "href": "/admin/manageArticle",
+        "description": "Let's make some articles!"
+      },
+      {
+        "title": "Manage Event",
+        "href": "/admin/manageEvent",
+        "description": "Let's share our events!"
+      },
+      {
+        "title": "Manage FAQ",
+        "href": "/admin/manageFAQ",
+        "description": "Let's answer some questions!"
+      }
+    ],
     "vitaClasses": [
       {
         "title": "Learning Modules",
@@ -91,6 +115,12 @@
 
     "badges-4": "Ever-growing Community",
     "badgesDescription-4": "Connect with other learners."
+  },
+
+  "BrowseArticlesSection": {
+    "title": "Browse Our Articles",
+    "subTitle": "Our articles recommended for you",
+    "headerBtnText": "View More"
   },
 
   "MasterclassSection": {
@@ -180,6 +210,11 @@
     "description-2": "Whether you're stuck on schoolwork or exploring new ideas, our members are here to help. Ask questions, share thoughts, and connect with people who want to see you succeed.",
     "description-3": "At Vitademy, we believe learning is better together. Whenever you need support, our community is here to encourage and inspire you every step of the way.",
     "detailBtnText": "Join the community"
+  },
+
+  "Article": {
+    "headerText": "Explore Ideas. Understand the World.",
+    "headerSubText": "Our Articles page brings you scientific journal breakdowns, thought-provoking blogs, and educational insights — simplified, relevant, and designed to fuel your curiosity. Stay informed on the latest discoveries, research, and ideas shaping the future of learning."
   },
 
   "FAQSection": {

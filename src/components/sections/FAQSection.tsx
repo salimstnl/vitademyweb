@@ -1,5 +1,5 @@
 import React from "react";
-import FAQAccordion from "../FAQAccordion";
+import FAQAccordion from "../faq-accordion";
 import { useTranslations } from "next-intl";
 
 export default function FAQSection() {

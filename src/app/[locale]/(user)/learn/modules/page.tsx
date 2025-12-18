@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
-import MaintenancePage from "@/components/MaintenancePage";
+import MaintenancePage from "@/components/maintenance-page";
 
 export default function Modules() {
   const [modules, setModules] = useState<Module[]>([]);

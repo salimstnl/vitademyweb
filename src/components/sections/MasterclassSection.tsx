@@ -1,6 +1,6 @@
 import React from "react";
 import CategoryBadge from "../ui/CategoryBadge";
-import MasterclassCard from "../MasterclassCard";
+import MasterclassCard from "../masterclass-card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import { useTranslations } from "next-intl";

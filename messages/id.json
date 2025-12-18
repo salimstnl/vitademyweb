@@ -1,5 +1,11 @@
 {
   "Navbar": {
+    "welcomeMessage": "Selamat Datang, ",
+    "notLoggedInWelcomeMessageMobile": "Senang bertemu denganmu",
+    "loggedInWelcomeMessageMobile": "Selamat datang kembali",
+    "registerMessage": "Buat akun",
+    "loginMessage": "Login ke akun kamu",
+    "VitaMin": "VitaMin",
     "VitaClass": "VitaClass",
     "VitaVoice": "VitaVoice",
     "VitaConnect": "VitaConnect",
@@ -7,9 +13,27 @@
     "ContactDialog": {
       "title": "Hubungi Vita",
       "description": "Ada yang ingin kamu sampaikan? Kirimkan pesanmu di sini!",
+      "inquiryLabel": "Pesan anda ...",
       "cancel": "Batal",
       "send": "Kirim"
     },
+    "vitaMin": [
+      {
+        "title": "Kelola Artikel",
+        "href": "/admin/manageArticle",
+        "description": "Gas kelola artikel kita!"
+      },
+      {
+        "title": "Kelola Acara",
+        "href": "/admin/manageEvent",
+        "description": "Yuk jadwalin acara kita!"
+      },
+      {
+        "title": "Kelola FAQ",
+        "href": "/admin/manageEvent",
+        "description": "Yuk jawab pertanyaan!"
+      }
+    ],
     "vitaClasses": [
       {
         "title": "Modul Pembelajaran",
@@ -91,6 +115,12 @@
 
     "badges-4": "Komunitas yang Terus Berkembang",
     "badgesDescription-4": "Terhubung dengan sesama pembelajar."
+  },
+
+  "BrowseArticlesSection": {
+    "title": "Jelajahi Artikel Kami",
+    "subTitle": "Artikel yang direkomendasikan untukmu",
+    "headerBtnText": "Lihat Selengkapnya"
   },
 
   "MasterclassSection": {
@@ -180,6 +210,11 @@
     "description-2": "Baik kamu kesulitan dengan tugas sekolah atau sedang menjelajahi ide baru, para anggota kami siap membantu. Ajukan pertanyaan, bagikan pemikiran, dan terhubung dengan orang-orang yang ingin melihatmu sukses.",
     "description-3": "Di Vitademy, kami percaya bahwa belajar akan lebih baik jika dilakukan bersama. Saat kamu membutuhkan dukungan, komunitas kami selalu siap untuk menyemangati dan menginspirasimu di setiap langkah.",
     "detailBtnText": "Gabung Komunitas"
+  },
+
+  "Article": {
+    "headerText": "Jelajahi Gagasan. Pahami Dunia.",
+    "headerSubText": "Halaman Artikel kami menyajikan rangkuman jurnal ilmiah, tulisan pemikiran kritis, dan wawasan edukatif — disederhanakan, relevan, dan dirancang untuk memicu rasa ingin tahu Anda. Tetap terinformasi dengan penemuan, riset, dan gagasan terbaru yang membentuk masa depan pembelajaran."
   },
 
   "FAQSection": {

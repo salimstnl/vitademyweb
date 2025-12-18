@@ -11,9 +11,10 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/Button";
+import { useTranslations } from "next-intl";
+import LoadingOverlay from "./loading-overlay";
 
 interface ContactDialogProps {
   open: boolean;
@@ -24,6 +25,7 @@ export default function ContactDialog({
   open,
   onOpenChange,
 }: ContactDialogProps) {
+  const t = useTranslations("Navbar");
   const [isSending, setIsSending] = useState(false);
 
   const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -79,51 +81,33 @@ export default function ContactDialog({
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
-        <form onSubmit={sendEmail}>
-          <DialogHeader>
-            <DialogTitle>Contact Vita</DialogTitle>
-            <DialogDescription>
-              Got anything you want to say to us? Give us a shout!
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="grid gap-4 py-5">
-            <div className="grid gap-3">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" required />
+    <div>
+      {isSending && <LoadingOverlay />}
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="sm:max-w-[425px]">
+          <form onSubmit={sendEmail}>
+            <DialogHeader>
+              <DialogTitle>{t("ContactDialog.title")}</DialogTitle>
+              <DialogDescription>
+                {t("ContactDialog.description")}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-5">
+              <Input name="name" placeholder="Name" />
+              <Input name="workspace" placeholder="Workspace" />
+              <Input name="email" placeholder="Email" />
+              <Input name="phone" placeholder="Phone" />
+              <Textarea name="inquiry" placeholder="Your message..." />
             </div>
-            <div className="grid gap-3">
-              <Label htmlFor="workspace">Workspace</Label>
-              <Input id="workspace" name="workspace" />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" required />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="phone">Phone</Label>
-              <Input id="phone" name="phone" />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="inquiry">What do you have to say for us?</Label>
-              <Textarea id="inquiry" name="inquiry" required />
-            </div>
-          </div>
-
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline" disabled={isSending}>
-                Cancel
-              </Button>
-            </DialogClose>
-            <Button type="submit" disabled={isSending}>
-              {isSending ? "Sending..." : "Send"}
-            </Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
-    </Dialog>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="outline">{t("ContactDialog.cancel")}</Button>
+              </DialogClose>
+              <Button type="submit">{t("ContactDialog.send")}</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 }
