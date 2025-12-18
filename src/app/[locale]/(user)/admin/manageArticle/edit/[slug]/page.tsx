@@ -1,14 +1,8 @@
 import EditArticleForm from "@/components/edit-article-form";
 import { getArticleBySlugAction } from "@/lib/actions/articleActions";
 
-export default async function EditArticlePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  // get article by slug data
-  const { slug } = params;
-  const result = await getArticleBySlugAction(slug);
+export default async function EditArticlePage({ params }: any) {
+  const result = await getArticleBySlugAction(params.slug);
 
   if (!result.success || !result.article) {
     return <div>Article not found</div>;
