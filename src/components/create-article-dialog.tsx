@@ -29,7 +29,10 @@ import { IoIosAdd } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 import { ScrollArea } from "./ui/scroll-area";
 import DeleteArticleCategoryDialog from "./delete-article-category-dialog";
-import { createArticleAction } from "@/lib/actions/articleActions";
+import {
+  createArticleAction,
+  getArticleCategoriesAction,
+} from "@/lib/actions/articleActions";
 import { toast } from "sonner";
 
 type Props = {
@@ -47,9 +50,7 @@ export default function CreateArticleDialogClient({
   const [isDeleteArticleCategoryOpen, setDeleteArticleCategoryOpen] =
     useState(false);
 
-  const [error, setError] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
-
   const [categories, setCategories] = useState<ArticleCategory[] | null>(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null
@@ -58,13 +59,13 @@ export default function CreateArticleDialogClient({
 
   // Get article category
   useEffect(() => {
-    fetch("/api/article/getArticleCategory")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setCategories(data.categories as ArticleCategory[]);
-        }
-      });
+    async function load() {
+      const result = await getArticleCategoriesAction();
+      if (result.success) {
+        setCategories(result.categories ?? []);
+      }
+    }
+    load();
   }, []);
 
   const [categoryId, setCategoryId] = useState("");
@@ -196,12 +197,23 @@ export default function CreateArticleDialogClient({
                 </div>
               </div>
             </ScrollArea>
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DialogClose>
-              <Button type="submit">Save</Button>
-            </DialogFooter>
+            {!creating ? (
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline">Cancel</Button>
+                </DialogClose>
+                <Button type="submit">Save</Button>
+              </DialogFooter>
+            ) : (
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="outline" disabled>
+                    Cancel
+                  </Button>
+                </DialogClose>
+                <Button disabled>Saving...</Button>
+              </DialogFooter>
+            )}
           </form>
         </DialogContent>
       </Dialog>

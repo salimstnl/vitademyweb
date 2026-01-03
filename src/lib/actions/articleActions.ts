@@ -51,6 +51,41 @@ export async function getArticleCategoriesAction() {
   return { success: true, categories };
 }
 
+export async function deleteArticleCategoryAction(articleCategoryId: string) {
+  const session = await getServerSession(authOptions);
+
+  if (!session || session.user.role !== "ADMIN") {
+    return { error: "Unauthorized" };
+  }
+
+  // get article first
+  const articleCategory = await prisma.articleCategory.findUnique({
+    where: { id: articleCategoryId },
+  });
+
+  if (!articleCategory) {
+    return { error: "Article category not found or already deleted!" };
+  }
+
+  // detect if there are still articles with the category admin wants to delete
+  const articleCount = await prisma.article.count({
+    where: { articleCategoryId },
+  });
+
+  if (articleCount > 0) {
+    return {
+      error: `Cannot delete category. ${articleCount} article(s) are still using this category.`,
+    };
+  }
+
+  // delete article row
+  await prisma.articleCategory.delete({
+    where: { id: articleCategoryId },
+  });
+
+  return { success: true };
+}
+
 export async function createArticleAction(data: {
   categoryId: string;
   title: string;
