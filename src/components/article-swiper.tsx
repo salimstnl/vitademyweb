@@ -67,7 +67,7 @@ export default function ArticleSwiper() {
                   <p className="italic text-sm">
                     {formatDate(article.createdAt)}
                   </p>
-                  <p className="uppercase text-stone-400 text-sm">
+                  <p className="capitalize text-stone-400 text-sm">
                     {article.author.name}
                   </p>
                 </div>

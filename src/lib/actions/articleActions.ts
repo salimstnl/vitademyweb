@@ -191,13 +191,20 @@ export async function getArticleAction(categoryId?: string) {
 export async function getArticleBySlugAction(slug: string) {
   try {
     const article = await prisma.article.findUnique({
-      where: {
-        slug: slug,
+      where: { slug },
+      include: {
+        author: true,
+        articleCategory: true,
       },
     });
+
+    if (!article) {
+      return { success: false, error: "Article not found" };
+    }
+
     return {
       success: true,
-      article,
+      article: article ?? null,
     };
   } catch (error) {
     console.error("Error fetching articles:", error);

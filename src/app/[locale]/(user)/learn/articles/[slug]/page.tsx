@@ -1,35 +1,35 @@
 import { authOptions } from "@/auth";
-import ArticleAdminActions from "@/components/article-admin-actions";
-import SafeHtml from "@/components/safe-html";
-import { getArticleBySlugAction } from "@/lib/actions/articleActions";
 import { getServerSession } from "next-auth";
+import { getArticleBySlugAction } from "@/lib/actions/articleActions";
+import ArticleAdminActions from "@/components/article-admin-actions";
+import ArticleContent from "@/components/article-content";
 
-export default async function ArticleDetail({ params }: any) {
-  // get user session
+export default async function ArticleDetail({
+  params,
+}: {
+  params: Promise<{ slug: string; locale: string }>;
+}) {
+  const { slug } = await params;
+
   const session = await getServerSession(authOptions);
   const role = session?.user?.role;
 
-  const result = await getArticleBySlugAction(params.slug);
+  const result = await getArticleBySlugAction(slug);
+
   if (!result.success || !result.article) {
-    return <div>Article not found</div>;
+    return <p>Article Not Found</p>;
   }
 
   const article = result.article;
+
   return (
     <div className="px-5">
       <div className="max-w-3xl mx-auto py-8">
         {role === "ADMIN" && (
           <ArticleAdminActions articleId={article.id} slug={article.slug} />
         )}
-        <h1 className="text-3xl font-bold">{article.title}</h1>
-        {article.thumbnail && (
-          <img
-            src={article.thumbnail}
-            alt={article.title}
-            className="my-6 rounded"
-          />
-        )}
-        <SafeHtml html={article.content} />
+
+        <ArticleContent article={article} />
       </div>
     </div>
   );
