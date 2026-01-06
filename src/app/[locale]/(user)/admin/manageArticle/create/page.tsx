@@ -59,8 +59,8 @@ export default function CreateArticle() {
   const [shortDesc, setShortDesc] = useState("");
   const [content, setContent] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  type ArticleStatus = "PUBLISHED" | "DRAFT";
+  async function handleSubmit(status: ArticleStatus) {
     setPending(true);
 
     let thumbnailUrl = null;
@@ -76,6 +76,7 @@ export default function CreateArticle() {
       shortDesc,
       content,
       thumbnailUrl,
+      status,
     });
 
     setPending(false);
@@ -86,10 +87,6 @@ export default function CreateArticle() {
     }
 
     toast.success("Article successfully saved!");
-
-    setTimeout(() => {
-      window.location.reload();
-    }, 1200);
   }
 
   return (
@@ -103,7 +100,7 @@ export default function CreateArticle() {
         onOpenChange={setOpenDeleteCategory}
         category={selectedCategory}
       />
-      <form onSubmit={handleSubmit} className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between">
         <div className="flex flex-col gap-5">
           <div>
             <h1 className="text-3xl font-bold">Create Article</h1>
@@ -178,14 +175,27 @@ export default function CreateArticle() {
           </div>
         </div>
         <div className="flex gap-2">
-          <Button type="submit" disabled={pending}>
+          <Button
+            type="button"
+            disabled={pending}
+            onClick={() => handleSubmit("PUBLISHED")}
+          >
             {pending ? "Saving..." : "Save"}
           </Button>
+
+          <Button
+            type="button"
+            disabled={pending}
+            onClick={() => handleSubmit("DRAFT")}
+          >
+            {pending ? "Saving..." : "Save as Draft"}
+          </Button>
+
           <Link href="/admin/manageArticle">
-            <Button>Cancel</Button>
+            <Button disabled={pending}>Cancel</Button>
           </Link>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

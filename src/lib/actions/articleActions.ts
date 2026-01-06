@@ -92,6 +92,7 @@ export async function createArticleAction(data: {
   shortDesc: string;
   thumbnailUrl?: string | null;
   content: string;
+  status: string;
 }) {
   // Fetch user session
   const session = await getServerSession(authOptions);
@@ -127,6 +128,8 @@ export async function createArticleAction(data: {
   if (existingArticle)
     return { error: "Article already exists! Please input a new title!" };
 
+  let published = data.status == "PUBLISHED" ? true : false;
+
   try {
     const userId = session?.user?.id;
     await prisma.article.create({
@@ -142,6 +145,7 @@ export async function createArticleAction(data: {
         author: {
           connect: { id: userId },
         },
+        published: published,
       },
     });
   } catch (error: any) {
@@ -165,9 +169,19 @@ export type ArticleWithRelations = Prisma.ArticleGetPayload<{
 
 export async function getArticleAction(categoryId?: string) {
   try {
+    const session = await getServerSession(authOptions);
+
+    let viewAll = false;
+    if (session && session.user.role === "ADMIN") {
+      viewAll = true;
+    }
+
     const articles: ArticleWithRelations[] = await prisma.article.findMany({
       orderBy: { createdAt: "desc" },
-      where: categoryId ? { articleCategoryId: categoryId } : {},
+      where: {
+        ...(!viewAll && { published: true }),
+        ...(categoryId && { articleCategoryId: categoryId }),
+      },
       include: {
         author: true,
         articleCategory: true,

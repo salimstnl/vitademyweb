@@ -14,7 +14,6 @@ import {
 } from "@/lib/actions/articleActions";
 import Link from "next/link";
 import ArticleAdminActions from "./article-admin-actions";
-import Image from "next/image";
 
 export default function ArticleTable() {
   const [articles, setArticles] = useState<ArticleWithRelations[] | null>(null);
@@ -41,6 +40,7 @@ export default function ArticleTable() {
             <TableHead>Category</TableHead>
             <TableHead>Created Date</TableHead>
             <TableHead>Author</TableHead>
+            <TableHead>Published</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -77,6 +77,7 @@ export default function ArticleTable() {
                   })}
                 </TableCell>
                 <TableCell>{a.author?.name}</TableCell>
+                <TableCell>{a.published ? "Yes" : "No"}</TableCell>
                 <TableCell>
                   <ArticleAdminActions articleId={a.id} slug={a.slug} />
                 </TableCell>
