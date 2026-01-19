@@ -36,7 +36,6 @@ export const authOptions: NextAuthOptions = {
           user.password
         );
         if (!isValid) return null;
-        console.log("user: " + JSON.stringify(user, null, 2));
         return {
           id: user.id,
           role: user.role,

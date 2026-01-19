@@ -5,11 +5,18 @@ import { Button } from "./ui/Button";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
+import { createUser } from "@/lib/actions/userActions";
+import { toast } from "sonner";
 
 export default function RegisterForm() {
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
   const [registering, setRegistering] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -17,36 +24,33 @@ export default function RegisterForm() {
     setError(null);
     setRegistering(true);
 
-    const formData = new FormData(e.currentTarget);
-
-    // Create user first
-    const res = await fetch("/api/user/createUser", {
-      method: "POST",
-      body: formData,
+    const res = await createUser({
+      username,
+      name,
+      email,
+      phone,
+      password,
     });
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      setError(data.error || "Something went wrong.");
-      setRegistering(false);
+    if (res?.error) {
+      toast.error(res.error);
       return;
     }
 
-    // Auto-login using NextAuth credentials provider
-    const loginResult = await signIn("credentials", {
+    toast.success("Register successfull!");
+
+    const result = await signIn("credentials", {
       redirect: false,
-      emailOrUsername: data.user.email, // or username, depends on your logic
-      password: formData.get("password") as string,
+      emailOrUsername: username || email,
+      password,
     });
 
-    if (loginResult?.error) {
-      setError(loginResult.error);
-      setRegistering(false);
+    if (result?.error) {
+      let error = setError("Automatic login failed: " + result.error);
       return;
     }
 
-    // Success → redirect
+    // success → redirect to homepage
     window.location.href = "/";
   }
 
@@ -64,11 +68,19 @@ export default function RegisterForm() {
             name="username"
             type="text"
             placeholder="vitapals_321"
+            onChange={(e) => setUsername(e.target.value)}
           />
+          trhb
         </Field>
         <Field>
           <FieldLabel htmlFor="name">Name</FieldLabel>
-          <Input id="name" name="name" type="text" placeholder="Vitapals" />
+          <Input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Vitapals"
+            onChange={(e) => setName(e.target.value)}
+          />
         </Field>
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -77,6 +89,7 @@ export default function RegisterForm() {
             name="email"
             type="text"
             placeholder="m@example.com"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Field>
         <Field>
@@ -89,6 +102,7 @@ export default function RegisterForm() {
             inputMode="tel"
             onChange={(e) => {
               e.target.value = e.target.value.replace(/[^0-9+\-()\s]/g, "");
+              setPhone(e.target.value);
             }}
           />
         </Field>
@@ -100,7 +114,8 @@ export default function RegisterForm() {
               name="password"
               type={showPassword ? "text" : "password"}
               placeholder="Password"
-              className="pr-10" // adds space so icon doesn’t overlap text
+              className="pr-10"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button
               type="button"

@@ -29,7 +29,11 @@ export default function LoginForm() {
     setLoggingIn(false);
 
     if (result?.error) {
-      setError(result.error);
+      let error = setError(
+        result.error === "CredentialsSignin"
+          ? "Incorrect email, username or password."
+          : result.error
+      );
       return;
     }
 

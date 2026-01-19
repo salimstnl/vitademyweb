@@ -3,6 +3,8 @@ import { getServerSession } from "next-auth";
 import { getArticleBySlugAction } from "@/lib/actions/articleActions";
 import ArticleAdminActions from "@/components/article-admin-actions";
 import ArticleContent from "@/components/article-content";
+import ArticleComment from "@/components/article-comment";
+import ArticleOthers from "@/components/article-others";
 
 export default async function ArticleDetail({
   params,
@@ -28,8 +30,9 @@ export default async function ArticleDetail({
         {role === "ADMIN" && (
           <ArticleAdminActions articleId={article.id} slug={article.slug} />
         )}
-
         <ArticleContent article={article} />
+        <ArticleComment />
+        <ArticleOthers />
       </div>
     </div>
   );

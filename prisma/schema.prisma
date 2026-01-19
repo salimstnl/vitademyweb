@@ -28,6 +28,7 @@ model User {
   role Role @default(USER)
 
   articles Article[]
+  comments        ArticleComment[]
 }
 
 model Article {
@@ -47,6 +48,8 @@ model Article {
 
   articleCategory    ArticleCategory @relation(fields: [articleCategoryId], references: [id])
   articleCategoryId  String
+
+  comments        ArticleComment[]
 }
 
 model ArticleCategory {
@@ -55,4 +58,22 @@ model ArticleCategory {
   slug    String     @unique
 
   articles Article[]
+}
+model ArticleComment {
+  id        String   @id @default(cuid())
+
+  content   String
+  rating    Int?     // nullable if you want comments without ratings
+
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  articleId String
+
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId  String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([articleId]) 
+  @@index([authorId])
 }
