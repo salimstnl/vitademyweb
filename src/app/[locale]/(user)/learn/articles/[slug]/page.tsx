@@ -9,12 +9,15 @@ import ArticleContent from "@/components/article-content";
 import ArticleComments from "@/components/article-comments";
 import ArticleOthers from "@/components/article-others";
 
-export default async function ArticleDetail({
-  params,
-}: {
-  params: { slug: string; locale: string };
-}) {
-  const { slug } = params;
+type PageProps = {
+  params: Promise<{
+    slug: string;
+    locale: string;
+  }>;
+};
+
+export default async function ArticleDetail({ params }: PageProps) {
+  const { slug } = await params;
 
   const session = await getServerSession(authOptions);
   const role = session?.user?.role;
@@ -25,7 +28,6 @@ export default async function ArticleDetail({
   }
 
   const article = articleResult.article;
-
   const commentsResult = await getArticleCommentsAction(article.id);
 
   return (
